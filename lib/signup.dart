@@ -96,7 +96,7 @@ class _UploadProfileImageState extends State<UploadProfileImage> {
       debugPrint(error.toString());
     }
   }
-  AuthController controller = Get.find();
+
   Map<String, String> userSignupData = {
     "firstname": "",
     "lastname":"",
@@ -106,13 +106,14 @@ class _UploadProfileImageState extends State<UploadProfileImage> {
     "address":""
 
   };
-
+  AuthController controller = Get.find();
   signUp() {
     if (_formKey.currentState!.validate()) {
       print("Form is valid ");
       _formKey.currentState!.save();
       print('User Sign Up Data $userSignupData');
-      controller.signUp(userSignupData['email'], userSignupData['password']);
+      controller.signUp(userSignupData['email'], userSignupData['password'],userSignupData['firstname'],
+          userSignupData['lastname'],userSignupData['phonenumber'],userSignupData['address']);
     }
   }
 
