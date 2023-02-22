@@ -141,7 +141,7 @@ class _MyLoginState extends State<MyLogin> {
                         child:Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text('Do not have an account' ,
+                            const Text('Do not have an account hello' ,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 17,
