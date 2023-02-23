@@ -5,8 +5,10 @@ import '/home.dart';
 import '/dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// defining a class authcontroller and making it as controller by getx
 class AuthController extends GetxController{
   var userId;
+  //defining a method for user signup
   Future<void>  signUp(email,password,firstname,lastname,phonenumber,address) async{
     try {
      CommonDialog.showLoading();
@@ -16,7 +18,7 @@ class AuthController extends GetxController{
       );
         print(userCredential);
         CommonDialog.hideLoading();
-
+        //storing userdata in firestore
         try{
           CommonDialog.showLoading();
           var response =
@@ -38,6 +40,8 @@ class AuthController extends GetxController{
           print("Error Saving data at firestore $exception");
         }
         Get.back();
+
+    //    catching exception of authcontroller
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
          CommonDialog.showErrorDialog(
@@ -57,6 +61,7 @@ class AuthController extends GetxController{
     }
 
   }
+  //creating method for login
   Future<void> login(email,password) async{
     print('$email,$password');
     try {
@@ -71,7 +76,7 @@ class AuthController extends GetxController{
 
       Get.off(HomeScreen());
 
-
+    //catching authcontroller exception
     } on FirebaseAuthException catch (e) {
       CommonDialog.hideLoading();
       if (e.code == 'user-not-found') {

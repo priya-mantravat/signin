@@ -15,6 +15,7 @@ class UploadProfileImage extends StatefulWidget {
 }
 
 class _UploadProfileImageState extends State<UploadProfileImage> {
+  //image picker part
   File? pickedImage;
   void imagePickerOption() {
     Get.bottomSheet(
@@ -106,7 +107,10 @@ class _UploadProfileImageState extends State<UploadProfileImage> {
     "address":""
 
   };
+
   AuthController controller = Get.find();
+
+  //calling signup method here
   signUp() {
     if (_formKey.currentState!.validate()) {
       print("Form is valid ");
@@ -117,7 +121,7 @@ class _UploadProfileImageState extends State<UploadProfileImage> {
     }
   }
 
-
+  //creating formkey
   final _formKey = GlobalKey<FormState>();
 
   @override
